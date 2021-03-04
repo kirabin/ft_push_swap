@@ -2,3 +2,6 @@
 **/*.o
 **/*.a
 **/*.dSYM
+**/*.vscode
+push_swap
+checker
