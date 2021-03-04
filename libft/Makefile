@@ -6,7 +6,7 @@
 #    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/28 11:34:55 by dmilan            #+#    #+#              #
-#    Updated: 2020/12/09 09:58:09 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/04 12:34:54 by dmilan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +20,6 @@
 NAME      = libft.a
 HEADER    = libft.h
 CCFLAGS   = -Wall -Wextra -Werror
-
-SRC_PRINT = ft_printf.c \
-			print_c.c \
-			print_s.c \
-			print_p.c \
-			print_di.c \
-			print_u.c \
-			print_x.c \
-			print_percent.c \
-			ft_printf_support.c
 
 SRC_STR   = ft_strchr.c \
 			ft_strcount.c \
@@ -79,8 +69,8 @@ SRC_INT   = ft_leni.c \
 			ft_min.c \
 			ft_abs.c \
 			ft_swapi.c \
-			ft_max.c 
-			
+			ft_max.c
+
 SRC_PUT   = ft_putc_fd.c \
 			ft_putuc_fd.c \
 			ft_puti_fd.c \
@@ -109,7 +99,6 @@ SRC       = $(wildcard ft_str/ft_*.c)   \
 			$(wildcard ft_lst/ft_*.c)   \
 			$(wildcard ft_mem/ft_*.c)   \
 			$(wildcard ft_chr/ft_*.c)   \
-			$(wildcard ft_printf/*.c)   \
 			$(wildcard ft_put/ft_*.c)   \
 			$(wildcard ft_int/ft_*.c)   \
 			$(wildcard ft_point/ft_*.c) \

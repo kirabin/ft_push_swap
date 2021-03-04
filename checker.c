@@ -6,24 +6,43 @@
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:19:16 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/04 11:49:34 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/04 12:41:32 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
+t_list	*ft_array_to_list(char **argv)
+{
+	t_list *list;
+
+	list = NULL;
+	while (*argv)
+	{
+		// if *argv is ingeger, else print Error
+			// check each item for errors
+			// Some errors
+			// some arguments are not integers,
+			// some arguments are bigger than an integer,
+			//  there are duplicates,
+			//  an instruction don’t exist and/or is incorrectly formatted.
+		ft_lstadd_back(&list, ft_lstnew(ft_atoi((char*)*argv)));
+		argv++;
+	}
+	return (list);
+}
+
 int		main(int argc, char **argv)
 {
-	
+	t_list	*left_list;
 
+	if (argc >= 2)
+	{
+		left_list = ft_array_to_list(argv + 1);
+		ft_lst_put(left_list, ft_puti_endl);
+		ft_lstclear(&left_list);
+	}
 
-	// create stack from argv
-	// check each item for errors
-		// Some errors
-		// some arguments are not integers,
-		// some arguments are bigger than an integer,
-		//  there are duplicates,
-		//  an instruction don’t exist and/or is incorrectly formatted.
 	// read command and execute one by one
 
 

@@ -6,22 +6,22 @@
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 10:43:39 by dmilan            #+#    #+#             */
-/*   Updated: 2020/12/11 16:54:18 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/04 12:38:11 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lst_put(t_list *list, void (*put)(void *content))
+void		ft_lst_put(t_list *list, void (*put)(int content))
 {
 	if (!list)
 	{
-		ft_printf("list is empty\n");
+		ft_putstr_fd("list is empty\n", 1);
 		return ;
 	}
 	if (!put)
 	{
-		ft_printf("function is empty\n");
+		ft_putstr_fd("function is empty\n", 1);
 		return ;
 	}
 	while (list)
@@ -29,5 +29,5 @@ void		ft_lst_put(t_list *list, void (*put)(void *content))
 		put(list->content);
 		list = list->next;
 	}
-	ft_printf("\n");
+	ft_putstr_fd("\n", 1);
 }

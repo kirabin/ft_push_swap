@@ -6,7 +6,7 @@
 /*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 11:43:38 by dmilan            #+#    #+#             */
-/*   Updated: 2020/12/19 16:49:29 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/04 12:36:33 by dmilan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ int					ft_isblank(char c);
 */
 void				ft_putc_fd(char c, int fd);
 void				ft_putuc_fd(unsigned char c, int fd);
+void				ft_putstr(char *s);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putstrn_fd(char *s, int n, int fd);
-void				ft_putendl_fd(char *s, int fd);
+void				ft_putendl();
+void				ft_puti(int n);
+void				ft_puti_endl(int n);
 void				ft_puti_fd(int n, int fd);
-void				ft_putui_fd(unsigned int n, int fd);
-void				ft_putui_hex_fd(unsigned int n, int is_upper, int fd);
-void				ft_putul_hex_fd(unsigned long n, int is_upper, int fd);
 void				ft_putcpp_fd(char **arr, int fd);
 void				ft_putcppn_fd(char **arr, int n, int fd);
 
@@ -110,62 +110,23 @@ void				ft_swapi(int *a, int *b);
 */
 typedef struct		s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }					t_list;
 
-t_list				*ft_lstnew(void *content);
+t_list				*ft_lstnew(int content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
-void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-						void (*del)(void *));
-void				ft_lst_put(t_list *list, void(*put)(void *content));
+void				ft_lstclear(t_list **lst);
+void				ft_lstiter(t_list *lst, void (*f)(int));
+void				ft_lst_put(t_list *list, void(*put)(int content));
 void				ft_lst_swap(t_list **head, t_list *a, t_list *b);
 void				ft_lst_bubble_sort(t_list **list,
 										int(*compare)(t_list *, t_list *));
 
-/*
-**  ft_printf
-*/
-typedef struct		s_format
-{
-	int				arg_len;
-	char			*arg_s;
-	int				width;
-	int				precision;
-	bool			precision_given;
-	bool			left_aligned;
-	bool			alternate_form;
-	char			fill;
-	char			sign;
-	char			type;
-	char			length;
-}					t_format;
-
-typedef struct		s_print
-{
-	int				printed;
-	va_list			valist;
-	t_format		f;
-}					t_print;
-
-int					ft_printf(const char *format, ...);
-void				fill_width(char fill, int n);
-void				print_c(t_print *print);
-void				print_s(t_print *print);
-void				print_p(t_print *print);
-int					print_di(t_print *print);
-int					print_u(t_print *print);
-void				print_x(t_print *print, bool is_upper);
-void				print_percent(t_print *print);
-t_print				default_print(void);
-t_format			default_format(void);
-const char			*get_f_length(t_print *print, const char *format_string);
 
 /*
 **  ft_point
