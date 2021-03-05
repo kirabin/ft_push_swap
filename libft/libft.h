@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 11:43:38 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/04 12:36:33 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/05 14:56:11 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void				ft_strfill(char fill, int n);
 char				*ft_strnstr(const char *haystack, const char *needle,
 								size_t len);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strcmp(const char *s1, const char *s2);
 int					ft_atoi(const char *str);
 char				*ft_strdup(const char *s1);
 const char			*ft_strskip_char(const char *s, char c);
@@ -126,6 +127,7 @@ void				ft_lst_put(t_list *list, void(*put)(int content));
 void				ft_lst_swap(t_list **head, t_list *a, t_list *b);
 void				ft_lst_bubble_sort(t_list **list,
 										int(*compare)(t_list *, t_list *));
+void				ft_put_lists_ab(t_list *a, t_list *b);
 
 
 /*

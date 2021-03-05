@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   execute_rotation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:04:52 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:30:27 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
-
-# include "libft/libft.h"
+#include "includes.h"
 
 /*
-** Execute
+** Rotate stack (first element becomes last one)
 */
 
-void		execute_push(t_list **from, t_list **to);
-void		execute_reverse_rotation(t_list **list);
-void		execute_rotation(t_list **list);
-void		execute_swap(t_list **list);
+void		execute_rotation(t_list **list)
+{
+	t_list *temp;
+	t_list *first;
 
-#endif
+	ft_putstr("executing rotation\n");
+	if (!*list || !(*list)->next)
+		return ;
+	temp = *list;
+	*list = (*list)->next;
+	first = temp;
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	temp->next = first;
+	first->next = NULL;
+}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+         #
+#    By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/28 11:34:55 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/04 12:34:54 by dmilan           ###   ########.fr        #
+#    Updated: 2021/03/05 15:02:37 by macbookpro       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRC_LST   = ft_lstadd_back.c \
 			ft_lstmerge.c \
 			ft_lstnew.c \
 			ft_lstrev.c \
+			ft_put_lists_ab.c \
 			ft_lstsize.c
 
 SRC_CHR   = ft_isalnum.c \

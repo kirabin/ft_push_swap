@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:19:16 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/04 12:41:32 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/05 15:24:06 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,101 @@ t_list	*ft_array_to_list(char **argv)
 	return (list);
 }
 
+bool	is_valid_command(char *command)
+{
+	if (!ft_strcmp(command, "sa"))
+		return (1);
+	if (!ft_strcmp(command, "sb"))
+		return (1);
+	if (!ft_strcmp(command, "ss"))
+		return (1);
+	if (!ft_strcmp(command, "pa"))
+		return (1);
+	if (!ft_strcmp(command, "pb"))
+		return (1);
+	if (!ft_strcmp(command, "ra"))
+		return (1);
+	if (!ft_strcmp(command, "rb"))
+		return (1);
+	if (!ft_strcmp(command, "rr"))
+		return (1);
+	if (!ft_strcmp(command, "rra"))
+		return (1);
+	if (!ft_strcmp(command, "rrb"))
+		return (1);
+	if (!ft_strcmp(command, "rrr"))
+		return (1);
+	return (0);
+}
+
+void	execute_command(char *command, t_list **a, t_list **b)
+{
+	if (!ft_strcmp(command, "sa") || !ft_strcmp(command, "ss"))
+		execute_swap(a);
+	if (!ft_strcmp(command, "sb") || !ft_strcmp(command, "ss"))
+		execute_swap(b);
+	if (!ft_strcmp(command, "pa"))
+		execute_push(b, a);
+	if (!ft_strcmp(command, "pb"))
+		execute_push(a, b);
+	if (!ft_strcmp(command, "ra") || !ft_strcmp(command, "rr"))
+		execute_rotation(a);
+	if (!ft_strcmp(command, "rb") || !ft_strcmp(command, "rr"))
+		execute_rotation(b);
+	if (!ft_strcmp(command, "rra") || !ft_strcmp(command, "rrr"))
+		execute_reverse_rotation(a);
+	if (!ft_strcmp(command, "rrb") || !ft_strcmp(command, "rrr"))
+		execute_reverse_rotation(b);
+}
+
+
+
 int		main(int argc, char **argv)
 {
-	t_list	*left_list;
+	t_list	*a;
+	t_list	*b;
+	char	*command;
+	int		result;
 
+	command = NULL;
+	b = NULL;
+	a = NULL;
 	if (argc >= 2)
 	{
-		left_list = ft_array_to_list(argv + 1);
-		ft_lst_put(left_list, ft_puti_endl);
-		ft_lstclear(&left_list);
+		a = ft_array_to_list(argv + 1);
+
+
+		while ((result = get_next_line(0, &command)) != 0)
+		{
+			if (result == -1)
+				// free before return or break ?
+				break; // handle_error("Error: get_next_line failed to read a file\n");
+			if (is_valid_command(command))
+				execute_command(command, &a, &b);
+			else
+				; // Error: not a valid command
+
+			// ft_lst_put(a, ft_puti_endl);
+			ft_put_lists_ab(a, b);
+			// ft_lst_put(a, ft_puti_endl);
+			free(command);
+		}
+		free(command);
+
+		// check if a is empty and b sorted in ascending order
+		// first element at the top of the stack
+
+		ft_lstclear(&a);
 	}
 
-	// read command and execute one by one
+
 
 
 	// Notes
 	// Stack should be able to do:
-		// sa, sb, ss    — swap first 2 elements on the stack
-		// pa, pb        — pop from one and push element to other stack, or do nothing if empty (pa - pop from b push to a)
-		// ra, rb, rr    — rotate stack (first element becomes last one)
+
+
+		// ra, rb, rr    — 
 		// rra, rrb, rrr — reverse rotate (last element becomes first one)
 
 

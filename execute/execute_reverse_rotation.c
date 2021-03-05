@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   execute_reverse_rotation.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:04:57 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:39:38 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "includes.h"
 
-# include "libft/libft.h"
+void		execute_reverse_rotation(t_list **list)
+{
+	t_list *temp;
+	t_list *second;
 
-/*
-** Execute
-*/
-
-void		execute_push(t_list **from, t_list **to);
-void		execute_reverse_rotation(t_list **list);
-void		execute_rotation(t_list **list);
-void		execute_swap(t_list **list);
-
-#endif
+	ft_putstr("executing reverse_rotation\n");
+	if (!*list || !(*list)->next)
+		return ;
+	temp = *list;
+	while (temp->next->next)
+		temp = temp->next;
+	second = temp->next;
+	temp->next = NULL;
+	second->next = *list;
+	*list = second;
+}

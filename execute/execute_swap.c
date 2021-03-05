@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   execute_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:05:03 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:18:59 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
-
-# include "libft/libft.h"
+#include "includes.h"
 
 /*
-** Execute
+** Swap first two elements on top of the stack "list"
 */
 
-void		execute_push(t_list **from, t_list **to);
-void		execute_reverse_rotation(t_list **list);
-void		execute_rotation(t_list **list);
-void		execute_swap(t_list **list);
+void		execute_swap(t_list **list)
+{
+	ft_putstr("executing swap\n");
 
-#endif
+	t_list *first;
+	t_list *second;
+
+	if (!*list || !(*list)->next)
+		return ;
+	first = *list;
+	second = first->next;
+	ft_lst_swap(list, first, second);
+}

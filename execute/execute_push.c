@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   execute_push.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:04:48 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:23:55 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
-
-# include "libft/libft.h"
+#include "includes.h"
 
 /*
-** Execute
+** Pop from and push to, or do nothing if from is empty.
 */
 
-void		execute_push(t_list **from, t_list **to);
-void		execute_reverse_rotation(t_list **list);
-void		execute_rotation(t_list **list);
-void		execute_swap(t_list **list);
+void		execute_push(t_list **from, t_list **to)
+{
+	t_list *temp;
 
-#endif
+	ft_putstr("executing push\n");
+	if (!*from)
+		return;
+	temp = *from;
+	*from = temp->next;
+	ft_lstadd_front(to, temp);
+}

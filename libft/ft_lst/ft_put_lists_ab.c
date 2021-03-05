@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   ft_put_lists_ab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 14:55:23 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:01:43 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
+#include "libft.h"
 
-# include "libft/libft.h"
+void	ft_put_lists_ab(t_list *a, t_list *b)
+{
+	ft_putstr("___\n");
+	while (a || b)
+	{
+		if (a)
+		{
+			ft_puti(a->content);
+			a = a->next;
+		}
+		else
+			ft_putc_fd(' ', 1);
+		ft_putc_fd(' ', 1);
+		if (b)
+		{
+			ft_puti(b->content);
+			b = b->next;
+		}
+		else
+			ft_putc_fd(' ', 1);
 
-/*
-** Execute
-*/
-
-void		execute_push(t_list **from, t_list **to);
-void		execute_reverse_rotation(t_list **list);
-void		execute_rotation(t_list **list);
-void		execute_swap(t_list **list);
-
-#endif
+		ft_putc_fd('\n', 1);
+	}
+	ft_putstr("___\n");
+	ft_putstr("a b\n");
+}
