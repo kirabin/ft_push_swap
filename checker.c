@@ -6,7 +6,7 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:19:16 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:24:06 by macbookpro       ###   ########.fr       */
+/*   Updated: 2021/03/06 15:46:02 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,22 @@ void	execute_command(char *command, t_list **a, t_list **b)
 		execute_reverse_rotation(b);
 }
 
+/*
+** Is sorted in ascending order
+*/
 
+bool	is_sorted(t_list *list)
+{
+	if (!list || !list->next)
+		return (1);
+	while (list->next)
+	{
+		if (list->content > list->next->content)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -95,28 +110,33 @@ int		main(int argc, char **argv)
 	{
 		a = ft_array_to_list(argv + 1);
 
-
+		// should read everything first
+		// only then execute
 		while ((result = get_next_line(0, &command)) != 0)
 		{
 			if (result == -1)
 				// free before return or break ?
 				break; // handle_error("Error: get_next_line failed to read a file\n");
-			if (is_valid_command(command))
+			// if (ft_strcmp(command, "rrb"))
+			// {
+			// 	ft_put_lists_ab(a, b);
+			// }
+			else if (is_valid_command(command))
 				execute_command(command, &a, &b);
 			else
 				; // Error: not a valid command
 
-			// ft_lst_put(a, ft_puti_endl);
-			ft_put_lists_ab(a, b);
-			// ft_lst_put(a, ft_puti_endl);
+			// if option -v is enabled
 			free(command);
 		}
 		free(command);
 
-		// check if a is empty and b sorted in ascending order
-		// first element at the top of the stack
-
+		if (b == NULL && is_sorted(a))
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
 		ft_lstclear(&a);
+		ft_lstclear(&b);
 	}
 
 
@@ -126,7 +146,7 @@ int		main(int argc, char **argv)
 	// Stack should be able to do:
 
 
-		// ra, rb, rr    — 
+		// ra, rb, rr    —
 		// rra, rrb, rrr — reverse rotate (last element becomes first one)
 
 

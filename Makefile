@@ -6,7 +6,7 @@
 #    By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/04 10:53:38 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/05 15:38:08 by macbookpro       ###   ########.fr        #
+#    Updated: 2021/03/05 16:08:44 by macbookpro       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,5 +49,3 @@ test:
 	# echo "pb\nsa\nsb" | ./checker 1 2 3 4
 	# echo "ra\nra\npb" | ./checker 1 2 3 3
 	echo "rra\nrra\npb" | ./checker 1 2 3 4
-
-
