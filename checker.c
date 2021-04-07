@@ -6,31 +6,11 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:19:16 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/06 15:46:02 by macbookpro       ###   ########.fr       */
+/*   Updated: 2021/03/07 14:19:59 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
-
-t_list	*ft_array_to_list(char **argv)
-{
-	t_list *list;
-
-	list = NULL;
-	while (*argv)
-	{
-		// if *argv is ingeger, else print Error
-			// check each item for errors
-			// Some errors
-			// some arguments are not integers,
-			// some arguments are bigger than an integer,
-			//  there are duplicates,
-			//  an instruction don’t exist and/or is incorrectly formatted.
-		ft_lstadd_back(&list, ft_lstnew(ft_atoi((char*)*argv)));
-		argv++;
-	}
-	return (list);
-}
 
 bool	is_valid_command(char *command)
 {
@@ -126,6 +106,7 @@ int		main(int argc, char **argv)
 			else
 				; // Error: not a valid command
 
+			ft_put_lists_ab(a, b);
 			// if option -v is enabled
 			free(command);
 		}
@@ -139,16 +120,10 @@ int		main(int argc, char **argv)
 		ft_lstclear(&b);
 	}
 
-
-
-
 	// Notes
 	// Stack should be able to do:
-
-
 		// ra, rb, rr    —
 		// rra, rrb, rrr — reverse rotate (last element becomes first one)
-
 
 	return (0);
 }

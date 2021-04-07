@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dmilan <dmilan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:49:49 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/04 11:50:04 by dmilan           ###   ########.fr       */
+/*   Updated: 2021/03/12 13:50:06 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "includes.h"
 
 int		main(int argc, char **argv)
 {

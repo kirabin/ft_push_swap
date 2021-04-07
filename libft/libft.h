@@ -6,7 +6,7 @@
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 11:43:38 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 14:56:11 by macbookpro       ###   ########.fr       */
+/*   Updated: 2021/03/07 14:19:48 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void				ft_lst_swap(t_list **head, t_list *a, t_list *b);
 void				ft_lst_bubble_sort(t_list **list,
 										int(*compare)(t_list *, t_list *));
 void				ft_put_lists_ab(t_list *a, t_list *b);
-
+t_list				*ft_array_to_list(char **argv);
 
 /*
 **  ft_point
