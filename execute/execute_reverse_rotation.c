@@ -17,7 +17,7 @@ void		execute_reverse_rotation(t_list **list)
 	t_list *temp;
 	t_list *second;
 
-	ft_putstr("executing reverse_rotation\n");
+	put_string("executing reverse_rotation\n");
 	if (!*list || !(*list)->next)
 		return ;
 	temp = *list;

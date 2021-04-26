@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS				= -Wall -Wextra -g #-Werror
+FLAGS				= -Wall -Wextra -Werror -g
 NAME_CHECKER		= checker
 NAME_PUSH_SWAP		= push_swap
 LIBFT				= libft/libft.a

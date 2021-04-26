@@ -18,7 +18,7 @@
 
 void		execute_swap(t_list **list)
 {
-	ft_putstr("executing swap\n");
+	put_string("executing swap\n");
 
 	t_list *first;
 	t_list *second;
@@ -27,5 +27,5 @@ void		execute_swap(t_list **list)
 		return ;
 	first = *list;
 	second = first->next;
-	ft_lst_swap(list, first, second);
+	swap_list_content(first, second);
 }

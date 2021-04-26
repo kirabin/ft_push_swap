@@ -20,10 +20,10 @@ void		execute_push(t_list **from, t_list **to)
 {
 	t_list *temp;
 
-	ft_putstr("executing push\n");
+	put_string("executing push\n");
 	if (!*from)
 		return;
 	temp = *from;
 	*from = temp->next;
-	ft_lstadd_front(to, temp);
+	list_add_front(to, temp);
 }

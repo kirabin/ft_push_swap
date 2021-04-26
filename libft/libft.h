@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/28 11:43:38 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/07 14:19:48 by macbookpro       ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef LIBFT_H
 # define LIBFT_H
 # define PI 3.14159265359
@@ -21,7 +9,7 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <math.h>
-
+# include <stdio.h>
 # include <stddef.h>
 # include <stdbool.h>
 # include <limits.h>
@@ -30,144 +18,111 @@
 #  define BUFFER_SIZE 1
 # endif
 
-/*
-**  ft_mem
-*/
-void				*ft_memset(void *b, int c, size_t len);
-void				ft_bzero(void *s, size_t n);
-void				*ft_memcpy(void *dst, const void *src, size_t n);
-void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
-void				*ft_memmove(void *dst, const void *src, size_t len);
-void				*ft_memchr(const void *s, int c, size_t n);
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
-void				*ft_calloc(size_t count, size_t size);
-void				*ft_calloc_c(size_t count, size_t size, int c);
+typedef unsigned int	t_color;
 
-/*
-**  ft_str
-*/
-size_t				ft_strlen(const char *s);
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-char				*ft_strchr(const char *s, int c);
-char				*ft_strrchr(const char *s, int c);
-void				ft_strfill(char fill, int n);
-char				*ft_strnstr(const char *haystack, const char *needle,
-								size_t len);
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_strcmp(const char *s1, const char *s2);
-int					ft_atoi(const char *str);
-char				*ft_strdup(const char *s1);
-const char			*ft_strskip_char(const char *s, char c);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
-char				*ft_strjoin(char const *s1, char const *s2);
-char				*ft_strtrim(char const *s1, char const *set);
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char				*ft_itoa(int n);
-char				*ft_strnew(int n);
-char				*ft_strjoinfree(char *s1, const char *s2);
-int					ft_strcount(const char *s, char c);
-const char			*ft_strskip(const char *s, int (*is_that)(int));
-
-/*
-**  ft_chr
-*/
-int					ft_isalpha(int c);
-int					ft_isdigit(int c);
-int					ft_isalnum(int c);
-int					ft_isascii(int c);
-int					ft_isprint(int c);
-int					ft_toupper(int c);
-int					ft_tolower(int c);
-int					ft_isspace(char c);
-int					ft_isblank(char c);
-
-/*
-**  ft_put
-*/
-void				ft_putc_fd(char c, int fd);
-void				ft_putuc_fd(unsigned char c, int fd);
-void				ft_putstr(char *s);
-void				ft_putstr_fd(char *s, int fd);
-void				ft_putstrn_fd(char *s, int n, int fd);
-void				ft_putendl();
-void				ft_puti(int n);
-void				ft_puti_endl(int n);
-void				ft_puti_fd(int n, int fd);
-void				ft_putcpp_fd(char **arr, int fd);
-void				ft_putcppn_fd(char **arr, int n, int fd);
-
-/*
-**  ft_int
-*/
-int					ft_leni(int n);
-int					ft_abs(int a);
-int					ft_min(int a, int b);
-int					ft_max(int a, int b);
-void				ft_swapi(int *a, int *b);
-
-/*
-**  ft_lst
-*/
-typedef struct		s_list
+typedef struct s_stack
 {
-	int				content;
-	struct s_list	*next;
-}					t_list;
+	void			*content;
+	struct s_stack	*next;
+}				t_stack;
 
-t_list				*ft_lstnew(int content);
-void				ft_lstadd_front(t_list **lst, t_list *new);
-int					ft_lstsize(t_list *lst);
-t_list				*ft_lstlast(t_list *lst);
-void				ft_lstadd_back(t_list **lst, t_list *new);
-void				ft_lstdelone(t_list *lst, void (*del)(void *));
-void				ft_lstclear(t_list **lst);
-void				ft_lstiter(t_list *lst, void (*f)(int));
-void				ft_lst_put(t_list *list, void(*put)(int content));
-void				ft_lst_swap(t_list **head, t_list *a, t_list *b);
-void				ft_lst_bubble_sort(t_list **list,
-										int(*compare)(t_list *, t_list *));
-void				ft_put_lists_ab(t_list *a, t_list *b);
-t_list				*ft_array_to_list(char **argv);
-
-/*
-**  ft_point
-*/
-typedef struct		s_point
+typedef struct s_point
 {
 	double			x;
 	double			y;
 }					t_point;
 
-t_point				ft_point_add(t_point a, t_point b);
-t_point				ft_point_new(double x, double y);
-double				ft_point_len(t_point point);
-t_point				ft_point_rotate(t_point point, double angle);
-
-/*
-**  ft_color
-*/
-typedef struct		s_color
+typedef struct s_list
 {
-	unsigned char	a;
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	int				argb;
-}					t_color;
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 
-int					ft_color_argb(unsigned char a, unsigned char r,
-									unsigned char g, unsigned char b);
-t_color				ft_color_new(unsigned char a, unsigned char r,
-									unsigned char g, unsigned char b);
-/*
-**  ft_other
-*/
-int					get_next_line(int fd, char **line);
-int					ft_lenui(unsigned int n);
-int					ft_lenui_hex(unsigned int n);
-int					ft_lenul_hex(unsigned long n);
-char				**ft_split(char const *s, char c);
-char				*ft_uitoa(unsigned int n);
+bool	is_path(char *string);
+bool	is_absolute_path(char *string);
+bool	is_relative_path(char *string);
+char	*get_file_name_from_path(char *path);
+
+int64_t	_atoi_long_long(const char *str);
+int		_atoi(const char *str);
+char	*_itoa(int n);
+int		_strcmp(const char *s1, const char *s2);
+int		_strncmp(const char *s1, const char *s2, size_t n);
+char	*_strdup(const char *s1);
+char	*_strndup(const char *s1, int n);
+int		_strlen(const char *s);
+char	*_strnstr(const char *haystack, const char *needle, size_t len);
+char	*_strtrim(char *s1, char *set);
+int		count_char(const char *s, char c);
+char	*fill_string(char *s, char c);
+char	*find_char(const char *s, int c);
+int		get_next_line(int fd, char **line);
+char	*get_string_slice(char *s, int start, int stop);
+char	*skip_char(char *s, char c);
+char	*string_join(char const *s1, char const *s2);
+char	*string_join_three(char const *s1, char const *s2, char const *s3);
+char	*string_join_free(char *s1, const char *s2);
+char	*string_join_free_rev(const char *s1, char *s2);
+char	*string_join_free_free(char *s1, char *s2);
+char	**split_string(const char *s, char c);
+bool	is_name(const char *str);
+
+bool	is_alpha(char c);
+bool	is_digit(char c);
+bool	is_ascii(char c);
+bool	is_space(char c);
+char	to_upper(char c);
+char	to_lower(char c);
+
+void	put_char(char c);
+void	put_char_fd(char c, int fd);
+void	put_cpp(char **cpp);
+void	put_cpp_fd(char **cpp, int fd);
+void	put_cpp_n(char **cpp, int n);
+void	put_cpp_n_fd(char **cpp, int n, int fd);
+void	put_int(int n);
+void	put_int_fd(int n, int fd);
+void	put_string(char *s);
+void	put_string_fd(char *s, int fd);
+void	put_string_n(char *s, int n);
+void	put_string_n_fd(char *s, int n, int fd);
+void	put_two_strings(char *s1, char *s2);
+void	put_two_strings_fd(char *s1, char *s2, int fd);
+void	put_uint(unsigned int n);
+void	put_uint_fd(unsigned int n, int fd);
+void	put_uint_hex(unsigned int n, int is_upper);
+void	put_uint_hex_fd(unsigned int n, int is_upper, int fd);
+
+int		_abs(int a);
+int		int_len(int n);
+int		int_min(int a, int b);
+int		int_max(int a, int b);
+void	swap_int(int *a, int *b);
+
+void	*_calloc(size_t count, size_t size);
+
+void	clear_list(t_list **lst, void (*del)(void*));
+void	delete_list(t_list *lst, void (*del)(void*));
+t_list	*find_list(t_list *begin_list, void *data_ref, int (*cmp)());
+void	list_add_back(t_list **lst, t_list *new);
+void	list_add_front(t_list **lst, t_list *new);
+t_list	*list_get_last(t_list *lst);
+int		list_size(t_list *lst);
+void	merge_lists(t_list **begin_list1, t_list *begin_list2);
+t_list	*new_list(void *content);
+void	put_list(t_list *list, void (*put)(void *content));
+void	reverse_list(t_list **begin_list);
+void	sort_list(t_list **list, int (*compare)(t_list *, t_list *));
+void	swap_list_content(t_list *a, t_list *b);
+
+t_point	point_add(t_point a, t_point b);
+t_point	point_new(double x, double y);
+double	point_len(t_point point);
+t_point	point_rotate(t_point point, double angle);
+
+t_color	new_color(unsigned char a, unsigned char r, unsigned char g,
+			unsigned char b);
+
+void	free_cpp(char **cpp);
 
 #endif

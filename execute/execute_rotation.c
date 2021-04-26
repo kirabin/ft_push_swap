@@ -21,7 +21,7 @@ void		execute_rotation(t_list **list)
 	t_list *temp;
 	t_list *first;
 
-	ft_putstr("executing rotation\n");
+	put_string("executing rotation\n");
 	if (!*list || !(*list)->next)
 		return ;
 	temp = *list;
