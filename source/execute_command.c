@@ -1,5 +1,45 @@
 #include "includes.h"
 
+void	ft_put_stacks_ab(t_list *a, t_list *b)
+{
+	put_string("___\n");
+	while (a || b)
+	{
+		if (a)
+		{
+			put_int(*(int *)a->content);
+			a = a->next;
+		}
+		else
+			putchar(' ');
+		putchar(' ');
+		if (b)
+		{
+			put_int(*(int *)b->content);
+			b = b->next;
+		}
+		else
+			putchar(' ');
+		putchar('\n');
+	}
+	put_string("___\n");
+	put_string("a b\n");
+}
+
+// TODO: verbose flag for put_stacks
+void	execute_commands(t_all *all)
+{
+	t_list	*command;
+
+	command = all->commands;
+	while (command)
+	{
+		execute_command(command->content, &all->stack_a, &all->stack_b);
+		ft_put_stacks_ab(all->stack_a, all->stack_b);
+		command = command->next;
+	}
+}
+
 void	execute_command(char *command, t_list **a, t_list **b)
 {
 	if (!_strcmp(command, "sa") || !_strcmp(command, "ss"))

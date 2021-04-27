@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_rotation.c                                 :+:      :+:    :+:   */
+/*   execute_reverse_rotation.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 08:04:52 by macbookpro        #+#    #+#             */
-/*   Updated: 2021/03/05 15:30:27 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:04:57 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/05 15:39:38 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
-/*
-** Rotate stack (first element becomes last one)
-*/
-
-void		execute_rotation(t_list **list)
+void	execute_reverse_rotation(t_list **list)
 {
-	t_list *temp;
-	t_list *first;
+	t_list	*temp;
+	t_list	*second;
 
-	put_string("executing rotation\n");
 	if (!*list || !(*list)->next)
 		return ;
 	temp = *list;
-	*list = (*list)->next;
-	first = temp;
-	while (temp->next)
-	{
+	while (temp->next->next)
 		temp = temp->next;
-	}
-	temp->next = first;
-	first->next = NULL;
+	second = temp->next;
+	temp->next = NULL;
+	second->next = *list;
+	*list = second;
 }

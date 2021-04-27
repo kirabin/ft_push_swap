@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute_swap.c                                     :+:      :+:    :+:   */
+/*   execute_push.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 08:05:03 by macbookpro        #+#    #+#             */
-/*   Updated: 2021/03/05 15:18:59 by macbookpro       ###   ########.fr       */
+/*   Created: 2021/03/05 08:04:48 by macbookpro        #+#    #+#             */
+/*   Updated: 2021/03/11 10:17:12 by macbookpro       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes.h"
 
 /*
-** Swap first two elements on top of the stack "list"
+** Pop from and push to, or do nothing if from is empty.
 */
 
-void		execute_swap(t_list **list)
+void	execute_push(t_list **from, t_list **to)
 {
-	put_string("executing swap\n");
+	t_list	*temp;
 
-	t_list *first;
-	t_list *second;
-
-	if (!*list || !(*list)->next)
+	if (!*from)
 		return ;
-	first = *list;
-	second = first->next;
-	swap_list_content(first, second);
+	temp = *from;
+	*from = temp->next;
+	list_add_front(to, temp);
 }

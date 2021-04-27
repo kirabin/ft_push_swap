@@ -1,6 +1,7 @@
 **/.DS_Store
 **/*.o
 **/*.a
+**/*.a.out
 **/*.dSYM
 **/*.vscode
 push_swap

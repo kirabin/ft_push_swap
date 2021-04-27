@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	sort_list(t_list **list, int (*compare)(t_list *, t_list *))
+void	sort_list(t_list **list, bool (*compare)(void *, void *))
 {
 	t_list		*a;
 	t_list		*b;
@@ -17,4 +17,33 @@ void	sort_list(t_list **list, int (*compare)(t_list *, t_list *))
 		}
 		a = a->next;
 	}
+}
+
+// Compare (int)a > (int)b
+bool	list_compare_int_more(void *a, void *b)
+{
+	if (*(int *)a > *(int *)b)
+		return (true);
+	return (false);
+}
+
+// Compare (int)a == (int)b
+bool	list_compare_int_equal(void *a, void *b)
+{
+	if (*(int *)a == *(int *)b)
+		return (true);
+	return (false);
+}
+
+bool	is_list_sorted(t_list *list, bool (*compare)(void *, void *))
+{
+	if (!list || !list->next)
+		return (true);
+	while (list->next)
+	{
+		if (compare(list->content, list->next->content))
+			return (false);
+		list = list->next;
+	}
+	return (true);
 }

@@ -15,4 +15,5 @@ void	list_add_back(t_list **lst, t_list *new)
 	while (node->next)
 		node = node->next;
 	node->next = new;
+	new->previous = node;
 }

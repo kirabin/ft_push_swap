@@ -14,12 +14,13 @@ FLAGS		=	-Wall -Wextra -Werror -g
 
 SRC_STR		=	_strlen _atoi _itoa _strdup _strcmp _strnstr _strtrim \
 				fill_string find_char count_char skip_char is_name \
-				string_join string_join_free split_string get_next_line
+				string_join string_join_free split_string get_next_line \
+				string_join_char
 
 SRC_CHR		=	is_alpha is_digit is_space to_lower to_upper
 
 SRC_NUM		=	_abs int_max int_min int_len swap_int \
-				is_long_long is_number
+				is_long_long is_number is_integer
 
 SRC_PUT		=	put_char put_cpp put_int put_string put_two_strings put_uint \
 				put_uint_hex
@@ -61,10 +62,10 @@ OBJ			=	$(SRC:.c=.o)
 all: $(NAME)
 
 shout_assemble:
-	@echo "$(GREEN)Assembling$(NO_COLOR)"
+	@echo "$(GREEN)Assembling libft$(NO_COLOR)"
 
 shout_clean:
-	@echo "$(RED)Cleaning$(NO_COLOR)"
+	@echo "$(RED)Cleaning libft$(NO_COLOR)"
 
 shout_test:
 	@echo "$(ORANGE)Testing$(NO_COLOR)"

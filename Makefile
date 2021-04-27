@@ -10,16 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS				= -Wall -Wextra -Werror -g
-NAME_CHECKER		= checker
-NAME_PUSH_SWAP		= push_swap
-LIBFT				= libft/libft.a
-SRC					= execute/execute_push.c \
-					  execute/execute_rotation.c \
-					  execute/execute_reverse_rotation.c \
-					  execute/execute_swap.c
-OBJ					= $(SRC:.c=.o)
-HEADER				= includes.h
+FLAGS				=	-Wall -Wextra -Werror -g
+NAME_CHECKER		=	checker
+NAME_PUSH_SWAP		=	push_swap
+LIBFT				=	libft/libft.a
+SRC					=	source/execute_push.c \
+						source/execute_rotation.c \
+						source/execute_reverse_rotation.c \
+						source/execute_swap.c \
+						source/execute_command.c \
+						source/command.c \
+						source/all.c
+OBJ					=	$(SRC:.c=.o)
+HEADER				=	includes.h
 
 all: $(LIBFT) $(NAME_CHECKER) $(NAME_PUSH_SWAP)
 
