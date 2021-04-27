@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int	intlen(int n)
+int	int_len(int n)
 {
 	int	len;
 

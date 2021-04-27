@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/04 10:53:38 by dmilan            #+#    #+#              #
-#    Updated: 2021/03/05 16:08:44 by macbookpro       ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 FLAGS				=	-Wall -Wextra -Werror -g
 NAME_CHECKER		=	checker
 NAME_PUSH_SWAP		=	push_swap
@@ -21,6 +9,7 @@ SRC					=	source/execute_push.c \
 						source/execute_command.c \
 						source/command.c \
 						source/all.c
+
 OBJ					=	$(SRC:.c=.o)
 HEADER				=	includes.h
 
@@ -47,8 +36,12 @@ fclean: clean
 re: fclean all
 
 test:
-	# ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+	ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
+	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
+	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 	# echo "pb\npb\npa" | ./checker 1 2 3 4
 	# echo "pb\nsa\nsb" | ./checker 1 2 3 4
 	# echo "ra\nra\npb" | ./checker 1 2 3 3
-	echo "rra\nrra\npb" | ./checker 1 2 3 4
+	# echo "rra\nrra\npb" | ./checker 1 2 3 4

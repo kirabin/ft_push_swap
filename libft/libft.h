@@ -78,6 +78,7 @@ char	to_lower(char c);
 
 void	put_char(char c);
 void	put_char_fd(char c, int fd);
+void	put_char_times(char c, int times);
 void	put_cpp(char **cpp);
 void	put_cpp_fd(char **cpp, int fd);
 void	put_cpp_n(char **cpp, int n);

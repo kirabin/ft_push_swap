@@ -2,28 +2,35 @@
 
 void	ft_put_stacks_ab(t_list *a, t_list *b)
 {
-	put_string("___\n");
+	int		width;
+
+	width = 12;
+	put_string("a           b\n\n");
 	while (a || b)
 	{
 		if (a)
 		{
 			put_int(*(int *)a->content);
+			put_char_times(' ', width - int_len(*(int *)a->content));
 			a = a->next;
 		}
 		else
-			putchar(' ');
-		putchar(' ');
+		{
+			put_char_times(' ', width);
+		}
 		if (b)
 		{
 			put_int(*(int *)b->content);
+			put_char_times(' ', width - int_len(*(int *)b->content));
 			b = b->next;
 		}
 		else
-			putchar(' ');
-		putchar('\n');
+		{
+			put_char_times(' ', width);
+		}
+		put_char('\n');
 	}
-	put_string("___\n");
-	put_string("a b\n");
+	put_string("_________________________\n");
 }
 
 // TODO: verbose flag for put_stacks
@@ -35,7 +42,6 @@ void	execute_commands(t_all *all)
 	while (command)
 	{
 		execute_command(command->content, &all->stack_a, &all->stack_b);
-		ft_put_stacks_ab(all->stack_a, all->stack_b);
 		command = command->next;
 	}
 }
