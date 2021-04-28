@@ -6,3 +6,5 @@
 **/*.vscode
 push_swap
 checker
+push_swap_tester
+push_swap_tester/*

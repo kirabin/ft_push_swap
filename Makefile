@@ -41,7 +41,5 @@ test:
 	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
 	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-	# echo "pb\npb\npa" | ./checker 1 2 3 4
-	# echo "pb\nsa\nsb" | ./checker 1 2 3 4
-	# echo "ra\nra\npb" | ./checker 1 2 3 3
-	# echo "rra\nrra\npb" | ./checker 1 2 3 4
+
+	bash ../tester.sh ./push_swap 100 10

@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 			all->commands = get_commands_from_stdin();
 			execute_commands(all);
 			if (all->stack_b == NULL
-				&& is_list_sorted(all->stack_a, list_compare_int_more))
+				&& is_list_sorted(all->stack_a, list_compare_int_less))
 				put_string("OK\n");
 			else
 				put_string("KO\n");

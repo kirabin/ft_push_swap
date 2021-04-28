@@ -1,6 +1,0 @@
-**/*.o
-**/*.a
-**/a.out
-**/main.c
-**/*.dSYM
-**/.DS_Store
