@@ -1,12 +1,5 @@
 #include "includes.h"
 
-// if *argv is ingeger, else print Error
-			// check each item for errors
-			// Some errors
-			// some arguments are not integers,
-			// some arguments are bigger than an integer,
-			//  there are duplicates,
-			//  an instruction don’t exist and/or is incorrectly formatted.
 bool	is_valid_argument(char *s, t_list *list, t_list *new)
 {
 	if (!is_number(s) || !is_integer(s))
@@ -32,9 +25,7 @@ t_list	*argv_to_stack_a(char **argv)
 	{
 		new = new_list_int(_atoi((char *)*argv));
 		if (is_valid_argument(*argv, list, new))
-		{
-			list_add_back(&list, new);
-		}
+			list_add_front(&list, new);
 		else
 		{
 			clear_list(&new, free);
@@ -52,7 +43,7 @@ void	free_all(t_all *all)
 	{
 		clear_list(&all->stack_a, free);
 		clear_list(&all->stack_b, free);
-		clear_list(&all->commands, free);
+		clear_queue(&all->commands, free);
 	}
 	free(all);
 }

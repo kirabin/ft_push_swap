@@ -1,8 +1,8 @@
 #include "includes.h"
 
-static t_list	*get_commands_from_stdin(void)
+static t_queue	*get_commands_from_stdin(void)
 {
-	t_list	*commands;
+	t_queue	*commands;
 	char	*line;
 
 	commands = NULL;
@@ -12,10 +12,12 @@ static t_list	*get_commands_from_stdin(void)
 		if (line == NULL)
 			break ;
 		if (is_valid_command(line))
-			list_add_back(&commands, new_list(line));
+			push_queue(&commands, new_queue(line));
 		else
 		{
-			put_string("Error: not a valid command, ignoring...\n");
+			put_string("Error: \"");
+			put_string(line);
+			put_string("\"not a valid command, ignoring...\n");
 		}
 	}
 	return (commands);
@@ -34,7 +36,7 @@ int	main(int argc, char **argv)
 			all->commands = get_commands_from_stdin();
 			execute_commands(all);
 			if (all->stack_b == NULL
-				&& is_list_sorted(all->stack_a, list_compare_int_less))
+				&& is_list_sorted(all->stack_a, list_compare_int_more))
 				put_string("OK\n");
 			else
 				put_string("KO\n");

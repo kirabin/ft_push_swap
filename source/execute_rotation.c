@@ -3,18 +3,14 @@
 // Rotate stack (first element becomes last one)
 void	execute_rotation(t_list **list)
 {
-	t_list	*temp;
-	t_list	*first;
+	t_list	*start;
 
-	if (!*list || !(*list)->next)
-		return ;
-	temp = *list;
-	*list = (*list)->next;
-	first = temp;
-	while (temp->next)
+	if (list)
 	{
-		temp = temp->next;
+		start = *list;
+		if (start->next)
+		{
+			*list = start->next;
+		}
 	}
-	temp->next = first;
-	first->next = NULL;
 }

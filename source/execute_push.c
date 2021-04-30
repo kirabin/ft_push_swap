@@ -1,28 +1,39 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   execute_push.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 08:04:48 by macbookpro        #+#    #+#             */
-/*   Updated: 2021/03/11 10:17:12 by macbookpro       ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "includes.h"
 
-/*
-** Pop from and push to, or do nothing if from is empty.
-*/
-
+// TODO: list_remove_index()
 void	execute_push(t_list **from, t_list **to)
 {
-	t_list	*temp;
+	t_list	*node;
+	t_list	*last;
 
-	if (!*from)
-		return ;
-	temp = *from;
-	*from = temp->next;
-	list_add_front(to, temp);
+	if (from && to)
+	{
+		if (*from)
+		{
+			node = *from;
+			if (*from)
+			{
+				if (list_size(*from) == 2)
+				{
+					*from = node->next;
+					(*from)->next = NULL;
+					(*from)->previous = NULL;
+				}
+				else if ((*from)->previous)
+				{
+					last = (*from)->previous;
+					*from = node->next;
+					(*from)->previous = last;
+					last->next = *from;
+				}
+				else
+					*from = NULL;
+			}
+			else
+				*from = NULL;
+			node->next = NULL;
+			node->previous = NULL;
+			list_add_front(to, node);
+		}
+	}
 }

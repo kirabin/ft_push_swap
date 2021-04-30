@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: macbookpro <macbookpro@student.42.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:59:10 by dmilan            #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:23 by macbookpro       ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef INCLUDES_H
 # define INCLUDES_H
 
@@ -19,7 +7,7 @@ typedef struct s_all
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*commands;
+	t_queue	*commands;
 	bool	flag_verbose;
 }	t_all;
 
@@ -37,5 +25,11 @@ void		execute_push(t_list **from, t_list **to);
 void		execute_reverse_rotation(t_list **list);
 void		execute_rotation(t_list **list);
 void		execute_swap(t_list **list);
+
+void		quick_sort_ab(t_all *all);
+
+int			find_min(t_list *list);
+int			find_max(t_list *list);
+int			find_avg(t_list *list);
 
 #endif

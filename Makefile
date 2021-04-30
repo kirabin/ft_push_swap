@@ -8,7 +8,9 @@ SRC					=	source/execute_push.c \
 						source/execute_swap.c \
 						source/execute_command.c \
 						source/command.c \
-						source/all.c
+						source/all.c \
+						source/find.c \
+						source/sort.c
 
 OBJ					=	$(SRC:.c=.o)
 HEADER				=	includes.h
@@ -28,6 +30,7 @@ $(NAME_CHECKER): $(SRC) $(HEADER) checker.c
 clean:
 	make clean -C libft/
 	rm -f $(OBJ)
+	rm -f **/a.out
 
 fclean: clean
 	make fclean -C libft/
@@ -35,11 +38,8 @@ fclean: clean
 
 re: fclean all
 
-test:
-	ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
-	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
-	ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | ./checker $ARG
-	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+test_100:
+	./test.sh 100 10
 
-	bash ../tester.sh ./push_swap 100 10
+test_500:
+	./test.sh 500 10
