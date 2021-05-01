@@ -25,7 +25,7 @@ t_list	*argv_to_stack(char **argv)
 	{
 		new = new_list_int(_atoi((char *)*argv));
 		if (is_valid_argument(*argv, list, new))
-			list_add_front(&list, new);
+			list_add_back(&list, new);
 		else
 		{
 			clear_list(&new, free);

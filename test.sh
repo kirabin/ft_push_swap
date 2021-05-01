@@ -17,10 +17,10 @@ for i in `seq 1 $2`;
 	do
 		printf '|%-8.8s|' "$1: $i"
 		ARG=`ruby -e "puts (1..$1).to_a.shuffle.join(' ')"`;
-		./push_swap $ARG > steps
 		if [[ "$1" -lt "$limit" ]]; then
 			printf ' %s |'  "$ARG"
 		fi
+		./push_swap $ARG | grep -E '(sa|sb|ss|ra|rb|rr|rra|rrb|rrr|pa|pb)' > steps
 		steps=`cat steps | wc -l | awk '{ printf "%d\n", $0 }'`
 		printf '%8.8s|'  "$steps"
 		if [[ "$max" -lt "$steps" ]]; then
@@ -31,7 +31,7 @@ for i in `seq 1 $2`;
 			min=$steps
 			min_steps=$ARG
 		fi
-		status=`cat steps | ./checker $ARG`
+		status=`cat steps | ./checker $ARG | grep -E '(OK|KO)'`
 		sum=`expr $sum + $steps`
 		printf '%s|\n'  "$status"
 

@@ -61,5 +61,7 @@ int	find_avg(t_list *list)
 		if (list == start)
 			break ;
 	}
-	return (sum / i);
+	if (i > 0)
+		return (sum / i);
+	return (0);
 }

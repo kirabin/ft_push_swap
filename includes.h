@@ -8,9 +8,9 @@ typedef struct s_all
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*sorted;
+	t_list	*next_sort;
 	t_queue	*commands;
 	bool	flag_verbose;
-	int		next;
 }	t_all;
 
 t_list		*argv_to_stack(char **argv);
