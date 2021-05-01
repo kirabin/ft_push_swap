@@ -11,7 +11,7 @@ static void	first_iteration(t_all *all)
 	average = find_avg(all->stack_a);
 	while (all->stack_a && i < size)
 	{
-		if (*(int *)all->stack_a->content < average)
+		if (*(int *)all->stack_a->content <= average)
 		{
 			all->stack_a->flag = true;
 			execute_push(&all->stack_a, &all->stack_b);
@@ -38,11 +38,17 @@ static void	second_iteration(t_all *all)
 	average = find_avg(all->stack_b);
 	while (all->stack_b && i < size)
 	{
+		while (all->stack_a && all->next_sort != all->sorted && *(int *)all->stack_a->content == *(int *)all->next_sort->content)
+		{
+			execute_rotation(&all->stack_a);
+			push_queue(&all->commands, new_queue(_strdup("ra")));
+			all->next_sort = all->next_sort->next;
+		}
 		if (*(int *)all->stack_b->content >= average)
 		{
 			execute_push(&all->stack_b, &all->stack_a);
 			push_queue(&all->commands, new_queue(_strdup("pa")));
-			if (*(int *)all->stack_a->content == *(int *)all->next_sort->content)
+			while (all->stack_a && all->next_sort != all->sorted && *(int *)all->stack_a->content == *(int *)all->next_sort->content)
 			{
 				execute_rotation(&all->stack_a);
 				push_queue(&all->commands, new_queue(_strdup("ra")));
@@ -53,13 +59,14 @@ static void	second_iteration(t_all *all)
 		{
 			execute_rotation(&all->stack_b);
 			push_queue(&all->commands, new_queue(_strdup("rb")));
-			if (all->stack_b == all->next_sort)
+			while (all->stack_b && *(int *)all->stack_b->content == *(int *)all->next_sort->content)
 			{
 				execute_push(&all->stack_b, &all->stack_a);
 				push_queue(&all->commands, new_queue(_strdup("pa")));
 				execute_rotation(&all->stack_a);
 				push_queue(&all->commands, new_queue(_strdup("ra")));
 				all->next_sort = all->next_sort->next;
+				i++;
 			}
 		}
 		ft_put_stacks_ab(all->stack_a, all->stack_b);

@@ -28,41 +28,62 @@ void	stack_sort_ab(t_all *all)
 	}
 }
 
+void	queue_del_next(t_queue *queue)
+{
+	t_queue		*node;
+
+	if (queue)
+	{
+		if (queue->next)
+		{
+			node = queue->next;
+			queue->next = node->next;
+			delete_queue(node, free);
+		}
+	}
+}
+
 static void print_optimized_commands(t_queue *queue)
 {
+	t_queue	*start;
+	int		i;
+
 	// TODO: ra ra rb rb -> rr rr
+	i = 0;
+	start = queue;
 	while (queue && queue->next)
 	{
-		if (_strcmp(queue->content, "ra") == 0 && _strcmp(queue->next->content, "rb") == 0)
+		if ((_strcmp(queue->content, "ra") == 0 && _strcmp(queue->next->content, "rb") == 0)
+			|| (_strcmp(queue->content, "rb") == 0 && _strcmp(queue->next->content, "ra") == 0))
 		{
-			put_two_strings("rr", "\n");
-			queue = queue->next;
+			queue = queue->previous;
+			queue_del_next(queue);
+			free(queue->next->content);
+			queue->next->content = _strdup("rr");
 		}
-		else if (_strcmp(queue->content, "rb") == 0 && _strcmp(queue->next->content, "ra") == 0)
+		else if ((_strcmp(queue->content, "rra") == 0 && _strcmp(queue->next->content, "rrb") == 0)
+					|| (_strcmp(queue->content, "rrb") == 0 && _strcmp(queue->next->content, "rra") == 0))
 		{
-			put_two_strings("rr", "\n");
-			queue = queue->next;
+			queue = queue->previous;
+			queue_del_next(queue);
+			free(queue->next->content);
+			queue->next->content = _strdup("rrr");
 		}
-		else if (_strcmp(queue->content, "rra") == 0 && _strcmp(queue->next->content, "rrb") == 0)
+		else if ((_strcmp(queue->content, "pa") == 0 && _strcmp(queue->next->content, "pb") == 0)
+					|| (_strcmp(queue->content, "pb") == 0 && _strcmp(queue->next->content, "pa") == 0)
+					|| (_strcmp(queue->content, "ra") == 0 && _strcmp(queue->next->content, "rra") == 0)
+					|| (_strcmp(queue->content, "rb") == 0 && _strcmp(queue->next->content, "rrb") == 0)
+					|| (_strcmp(queue->content, "rra") == 0 && _strcmp(queue->next->content, "ra") == 0)
+					|| (_strcmp(queue->content, "rrb") == 0 && _strcmp(queue->next->content, "rb") == 0))
 		{
-			put_two_strings("rrr", "\n");
-			queue = queue->next;
+			queue = queue->previous;
+			queue_del_next(queue);
+			queue_del_next(queue);
 		}
-		else if (_strcmp(queue->content, "rrb") == 0 && _strcmp(queue->next->content, "rra") == 0)
-		{
-			put_two_strings("rrr", "\n");
-			queue = queue->next;
-		}
-		else if (_strcmp(queue->content, "pa") == 0 && _strcmp(queue->next->content, "pb") == 0)
-			queue = queue->next;
-		else if (_strcmp(queue->content, "pb") == 0 && _strcmp(queue->next->content, "pa") == 0)
-			queue = queue->next;
 		else
-			put_two_strings(queue->content, "\n");
-		queue = queue->next;
+			queue = queue->next;
 	}
-	if (queue)
-		put_two_strings(queue->content, "\n");
+	put_queue(start, put_void_string, "\n", "");
 }
 
 int	main(int argc, char **argv)
@@ -76,8 +97,8 @@ int	main(int argc, char **argv)
 		if (all->stack_a)
 		{
 			all->sorted = argv_to_stack(argv + 1);
-			bubble_sort(all);
-			// quick_sort_ab(all);
+			// bubble_sort(all);
+			quick_sort(all);
 			print_optimized_commands(all->commands);
 			// put_queue(optimized, put_void_string, "\n", "");
 			// ft_put_stacks_ab(all->stack_a, all->stack_b);
