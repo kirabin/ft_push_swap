@@ -4,10 +4,9 @@ void	ft_put_stacks_ab(t_list *a, t_list *b)
 {
 	put_string("---\n");
 	put_string("a| ");
-	put_list_forward(a, put_void_int_space);
-	put_string("\n");
+	put_list_forward(a, put_void_int, " ", "\n");
 	put_string("b| ");
-	put_list_forward(b, put_void_int_space);
+	put_list_forward(b, put_void_int, " ", "\n");
 	put_string("---\n");
 }
 

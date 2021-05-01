@@ -15,7 +15,7 @@ bool	is_valid_argument(char *s, t_list *list, t_list *new)
 	return (true);
 }
 
-t_list	*argv_to_stack_a(char **argv)
+t_list	*argv_to_stack(char **argv)
 {
 	t_list	*list;
 	t_list	*new;
@@ -43,6 +43,7 @@ void	free_all(t_all *all)
 	{
 		clear_list(&all->stack_a, free);
 		clear_list(&all->stack_b, free);
+		clear_list(&all->sorted, free);
 		clear_queue(&all->commands, free);
 	}
 	free(all);
@@ -57,6 +58,7 @@ t_all	*init_all(void)
 	{
 		all->stack_a = NULL;
 		all->stack_b = NULL;
+		all->sorted = NULL;
 		all->commands = NULL;
 	}
 	return (all);

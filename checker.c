@@ -30,7 +30,8 @@ int	main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		all = init_all();
-		all->stack_a = argv_to_stack_a(argv + 1);
+		all->stack_a = argv_to_stack(argv + 1);
+		all->sorted = argv_to_stack(argv + 1);
 		if (all->stack_a)
 		{
 			all->commands = get_commands_from_stdin();

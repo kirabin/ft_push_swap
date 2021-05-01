@@ -55,12 +55,13 @@ int	main(int argc, char **argv)
 	if (argc >= 2)
 	{
 		all = init_all();
-		all->stack_a = argv_to_stack_a(argv + 1);
+		all->stack_a = argv_to_stack(argv + 1);
 		if (all->stack_a)
 		{
+			all->sorted = argv_to_stack(argv + 1);
 			bubble_sort_ab(all);
 			// quick_sort_ab(all);
-			put_queue(all->commands, put_void_string_endl);
+			put_queue(all->commands, put_void_string, "\n", "");
 			// ft_put_stacks_ab(all->stack_a, all->stack_b);
 		}
 		free_all(all);

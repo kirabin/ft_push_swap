@@ -7,11 +7,13 @@ typedef struct s_all
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	t_list	*sorted;
 	t_queue	*commands;
 	bool	flag_verbose;
+	int		next;
 }	t_all;
 
-t_list		*argv_to_stack_a(char **argv);
+t_list		*argv_to_stack(char **argv);
 void		ft_put_stacks_ab(t_list *a, t_list *b);
 
 t_all		*init_all(void);
