@@ -10,7 +10,8 @@ SRC					=	source/execute_push.c \
 						source/command.c \
 						source/all.c \
 						source/find.c \
-						source/sort.c
+						source/quick_sort.c \
+						source/bubble_sort.c
 
 OBJ					=	$(SRC:.c=.o)
 HEADER				=	includes.h

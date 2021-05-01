@@ -1,28 +1,5 @@
 #include "includes.h"
 
-void	bubble_sort_ab(t_all *all)
-{
-	int		min;
-
-	while (all->stack_a)
-	{
-		min = find_min(all->stack_a);
-		while (*(int *)all->stack_a->content != min)
-		{
-			execute_rotation(&all->stack_a);
-			push_queue(&all->commands, new_queue(_strdup("ra")));
-		}
-		execute_push(&all->stack_a, &all->stack_b);
-		all->stack_a->flag = true;
-		push_queue(&all->commands, new_queue(_strdup("pb")));
-	}
-	while (all->stack_b)
-	{
-		execute_push(&all->stack_b, &all->stack_a);
-		push_queue(&all->commands, new_queue(_strdup("pa")));
-	}
-}
-
 void	stack_sort_ab(t_all *all)
 {
 	int		temp;
@@ -99,8 +76,8 @@ int	main(int argc, char **argv)
 		if (all->stack_a)
 		{
 			all->sorted = argv_to_stack(argv + 1);
-			// bubble_sort_ab(all);
-			quick_sort_ab(all);
+			bubble_sort(all);
+			// quick_sort_ab(all);
 			print_optimized_commands(all->commands);
 			// put_queue(optimized, put_void_string, "\n", "");
 			// ft_put_stacks_ab(all->stack_a, all->stack_b);

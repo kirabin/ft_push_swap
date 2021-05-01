@@ -158,7 +158,7 @@ static void	third_iteration(t_all *all)
 
 }
 
-void	quick_sort_ab(t_all *all)
+void	quick_sort(t_all *all)
 {
 	int		i;
 
