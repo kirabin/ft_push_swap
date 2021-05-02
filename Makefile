@@ -11,6 +11,8 @@ SRC					=	source/execute_push.c \
 						source/all.c \
 						source/find.c \
 						source/quick_sort.c \
+						source/sort_three.c \
+						source/sort_five.c \
 						source/bubble_sort.c
 
 OBJ					=	$(SRC:.c=.o)
