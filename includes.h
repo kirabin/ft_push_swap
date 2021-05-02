@@ -30,6 +30,8 @@ void		execute_swap(t_list **list);
 
 void		quick_sort(t_all *all);
 void		bubble_sort(t_all *all);
+void		sort_three(t_all *all);
+void		sort_five(t_all *all);
 
 int			find_min(t_list *list);
 int			find_max(t_list *list);

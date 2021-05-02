@@ -97,8 +97,15 @@ int	main(int argc, char **argv)
 		if (all->stack_a)
 		{
 			all->sorted = argv_to_stack(argv + 1);
-			// bubble_sort(all);
-			quick_sort(all);
+			if (list_size(all->stack_a) == 3)
+				sort_three(all);
+			else if (list_size(all->stack_a) == 5)
+				sort_five(all);
+			else
+			{
+				// quick_sort(all);
+				bubble_sort(all);
+			}
 			print_optimized_commands(all->commands);
 			// put_queue(optimized, put_void_string, "\n", "");
 			// ft_put_stacks_ab(all->stack_a, all->stack_b);

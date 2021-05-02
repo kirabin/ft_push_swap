@@ -44,12 +44,28 @@ static void	second_iteration(t_all *all)
 			push_queue(&all->commands, new_queue(_strdup("ra")));
 			all->next_sort = all->next_sort->next;
 		}
+		while (all->stack_a && all->next_sort != all->sorted && *(int *)all->stack_a->next->content == *(int *)all->next_sort->content)
+		{
+			execute_swap(&all->stack_a);
+			push_queue(&all->commands, new_queue(_strdup("sa")));
+			execute_rotation(&all->stack_a);
+			push_queue(&all->commands, new_queue(_strdup("ra")));
+			all->next_sort = all->next_sort->next;
+		}
 		if (*(int *)all->stack_b->content >= average)
 		{
 			execute_push(&all->stack_b, &all->stack_a);
 			push_queue(&all->commands, new_queue(_strdup("pa")));
 			while (all->stack_a && all->next_sort != all->sorted && *(int *)all->stack_a->content == *(int *)all->next_sort->content)
 			{
+				execute_rotation(&all->stack_a);
+				push_queue(&all->commands, new_queue(_strdup("ra")));
+				all->next_sort = all->next_sort->next;
+			}
+			while (all->stack_a && all->next_sort != all->sorted && *(int *)all->stack_a->next->content == *(int *)all->next_sort->content)
+			{
+				execute_swap(&all->stack_a);
+				push_queue(&all->commands, new_queue(_strdup("sa")));
 				execute_rotation(&all->stack_a);
 				push_queue(&all->commands, new_queue(_strdup("ra")));
 				all->next_sort = all->next_sort->next;
@@ -61,6 +77,17 @@ static void	second_iteration(t_all *all)
 			push_queue(&all->commands, new_queue(_strdup("rb")));
 			while (all->stack_b && *(int *)all->stack_b->content == *(int *)all->next_sort->content)
 			{
+				execute_push(&all->stack_b, &all->stack_a);
+				push_queue(&all->commands, new_queue(_strdup("pa")));
+				execute_rotation(&all->stack_a);
+				push_queue(&all->commands, new_queue(_strdup("ra")));
+				all->next_sort = all->next_sort->next;
+				i++;
+			}
+			while (all->stack_b && all->stack_b->next && *(int *)all->stack_b->next->content == *(int *)all->next_sort->content)
+			{
+				execute_swap(&all->stack_b);
+				push_queue(&all->commands, new_queue(_strdup("sb")));
 				execute_push(&all->stack_b, &all->stack_a);
 				push_queue(&all->commands, new_queue(_strdup("pa")));
 				execute_rotation(&all->stack_a);
